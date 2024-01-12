@@ -12,7 +12,7 @@ def open(name: str) -> Connection:
 
     A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorNoSuchDatabase)` will be raised when the host does not recognize the database name requested.
     
-    A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorInvalidConnection)` will be raised when the provided connection is not valid.
+    A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorInvalidConnection)` will be raised when the provided connection string is not valid.
     
     A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorIo(str))` will be raised when implementation-specific error occured (e.g. I/O)
     """
@@ -21,10 +21,8 @@ def open(name: str) -> Connection:
 def open_default() -> Connection:
     """Open the default store.
 
-    A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorOther(str))` will be raised when the component does not have access to the default database.
+    A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorAccessDenied)` will be raised when the component does not have access to the default database.
 
-    A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorInvalidConnection)` will be raised when the provided connection is not valid.
-    
     A `spin_sdk.wit.types.Err(spin_sdk.wit.imports.sqlite(ErrorIo(str))` will be raised when implementation-specific error occured (e.g. I/O)
     """
     return Connection.open("default")
